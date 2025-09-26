@@ -2,82 +2,202 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<title>PARA TI MI VIDA BELLA 💘​</title>
-<link rel="stylesheet" href="dos.css">
+<title>PARA TI MI VIDA BELLA 💘</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
-.card{
-background:rgb(255, 252, 252);
-padding:30px;
-border-radius:12px;
-box-shadow:0 4px 12px rgba(0,0,0,0.1);
-max-width:600px;
-text-align:center;
+/* ===== Fondo animado ===== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7, #fad0c4, #fbc2eb);
+  background-size: 400% 400%;
+  animation: gradient 12s ease infinite;
+  color: #333;
+  overflow-y: auto; /* permitimos scroll vertical */
+  overflow-x: hidden; /* ocultamos scroll horizontal */
 }
-h1{
-color:#e63946;
-margin-bottom:10px;
+
+@keyframes gradient {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
 }
-.heart{
-font-size:40px;
-color:#e63946;
-margin:10px 0;
+
+/* ===== Borde animado ===== */
+.borde {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* no bloquea scroll ni clics */
+  z-index: 1;
 }
-p{
-font-size:18px;
-line-height:1.5;
-margin:10px 0;
+
+.borde::before {
+  content: "";
+  position: absolute;
+  top: 10px; left: 10px; right: 10px; bottom: 10px;
+  border: 5px solid transparent;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #ff758c, #ff7eb3, #a18cd1, #fbc2eb);
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: moverBorde 6s linear infinite;
 }
+
+@keyframes moverBorde {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+/* ===== Lluvia de corazones ===== */
+.heart-rain {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* no bloquea scroll ni clics */
+  z-index: 0;
+}
+
+.heart-rain span {
+  position: absolute;
+  top: -50px;
+  font-size: 24px;
+  color: #e63946;
+  animation: caer 8s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes caer {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(120vh) rotate(360deg); opacity: 0; }
+}
+
+/* Diferentes tamaños y velocidades */
+.heart-rain span:nth-child(odd) {
+  font-size: 30px;
+  animation-duration: 10s;
+}
+.heart-rain span:nth-child(even) {
+  font-size: 20px;
+  animation-duration: 7s;
+}
+
+/* ===== Tarjeta principal ===== */
+.card {
+  background: rgba(255,255,255,0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+  max-width:600px;
+  text-align:center;
+  margin: 40px auto; /* centrada y con margen para scroll */
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  color:#e63946;
+  margin-bottom:10px;
+}
+
+.heart {
+  font-size:40px;
+  color:#e63946;
+  margin:10px 0;
+  animation: latido 1s infinite;
+}
+
+@keyframes latido {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.3);}
+  100% {transform: scale(1);}
+}
+
+p {
+  font-size:18px;
+  line-height:1.5;
+  margin:10px 0;
+}
+
 .photo{
-margin:20px 0;
+  margin:20px 0;
 }
 .photo img{
-max-width:100%;
-border-radius:10px;
-box-shadow:0 4px 8px rgba(0,0,0,0.15);
+  max-width:100%;
+  border-radius:10px;
+  box-shadow:0 4px 8px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
 }
+.photo img:hover {
+  transform: scale(1.03);
+}
+
 ul{
-list-style:none;
-padding:0;
+  list-style:none;
+  padding:0;
 }
 ul li{
-margin:8px 0;
+  margin:8px 0;
+  position: relative;
+  padding-left: 20px;
 }
 ul li::before{
-content:"♥ ";
-color:#e63946;
+  content:"♥ ";
+  color:#e63946;
 }
+
 footer{
-margin-top:20px;
-font-size:14px;
-color:#555;
+  margin-top:20px;
+  font-size:14px;
+  color:#555;
 }
 </style>
 </head>
 <body>
-<div class="card">
-<h1>PARA TI MI VIDA BELLA </h1>
-<div class="heart">♥</div>
-<p>Mi armor la verdad eres una persona inpresinante con tantos talentos y muchas cosas que puedes afrecer al mundo mi vida todo el esfuerzo que le pones alas cosas me para atmirable cada dia mas nos conocemos un poco mas y eso me encata mi vida espero y esto siga mucho mas quiero conocer cada ricon de ti mi amor cada pisca de ti asta la parte mas infima yo la quiero porque yo quiero que me estresges todo mi vida eres la primera persona que AMO de verdad me alegro de estar contigo cada dia y ternerte aqui a mi lado aunque en su monto emos tenido muchos pornlamas asun asi te sigo eliguiendo cada dia mas y mas y espero que tu tanbien lo agas mi vida espero y teguste esto mi amor TE AMOOOOOOOOOO 💘​💘​💘​💘​💘​💘​💘​💘​💘​
-<div class="borde"></div>
-<div class="photo">
-<!-- Reemplaza el enlace de la imagen con una tuya -->
-<img src="foto1.jfif" alt="Nuestra foto">
-</div>
 
+  <!-- Overlays -->
+  <div class="borde"></div>
+  <div class="heart-rain">
+    <span style="left:5%; animation-delay:0s">♥</span>
+    <span style="left:15%; animation-delay:1s">♥</span>
+    <span style="left:25%; animation-delay:0.5s">♥</span>
+    <span style="left:35%; animation-delay:1.2s">♥</span>
+    <span style="left:45%; animation-delay:0.7s">♥</span>
+    <span style="left:55%; animation-delay:1.5s">♥</span>
+    <span style="left:65%; animation-delay:0.3s">♥</span>
+    <span style="left:75%; animation-delay:1s">♥</span>
+    <span style="left:85%; animation-delay:0.6s">♥</span>
+    <span style="left:95%; animation-delay:1.3s">♥</span>
+  </div>
 
-<p>Esta página sencilla es un reflejo de lo grande que es mi amor por ti.</p>
+  <!-- Contenido principal -->
+  <div class="card">
+    <h1>PARA TI MI VIDA BELLA</h1>
+    <div class="heart">♥</div>
+    <p>Mi armor la verdad eres una persona inpresinante con tantos talentos y muchas cosas que puedes afrecer al mundo mi vida todo el esfuerzo que le pones alas cosas me para atmirable cada dia mas nos conocemos un poco mas y eso me encata mi vida espero y esto siga mucho mas quiero conocer cada ricon de ti mi amor cada pisca de ti asta la parte mas infima yo la quiero porque yo quiero que me estresges todo mi vida eres la primera persona que AMO de verdad me alegro de estar contigo cada dia y ternerte aqui a mi lado aunque en su monto emos tenido muchos pornlamas asun asi te sigo eliguiendo cada dia mas y mas y espero que tu tanbien lo agas mi vida espero y teguste esto mi amor TE AMOOOOOOOOOO 💘​💘​💘​💘​💘​💘​💘​💘​💘​</p>
 
+    <div class="photo">
+      <img src="foto1.jfif" alt="Nuestra foto">
+    </div>
 
-<h2>Nuestros Momentos</h2>
-<ul>
-<li>El día que nos encontramos 31/octubre/2024</li>
-<li>Nuestra primera beso 1/noviembre/2024</li>
-<li>El dia que fuimos novios 4/noviembre/2024</li>
-</ul>
+    <p>Esta página sencilla es un reflejo de lo grande que es mi amor por ti.</p>
 
+    <h2>Nuestros Momentos</h2>
+    <ul>
+      <li>El día que nos encontramos — 31/octubre/2024</li>
+      <li>Nuestro primer beso — 1/noviembre/2024</li>
+      <li>El día que fuimos novios — 4/noviembre/2024</li>
+    </ul>
 
-<footer>Con todo mi amor, siempre tuyo ♥</footer>
-</div>
+    <footer>Con todo mi amor, siempre tuyo ♥</footer>
+  </div>
 
 </body>
 </html>
